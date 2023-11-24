@@ -10,7 +10,7 @@ import androidx.room.Update
 @Dao
 interface PatientDao {
     @Insert
-    suspend fun insertPatient(patient: Patient): Long
+    fun insertPatient(patient: Patient): Long
 
     @Query("SELECT * FROM patient_table")
     fun getAllPatients(): LiveData<List<Patient>>
@@ -23,6 +23,5 @@ interface PatientDao {
 
     @Delete
     suspend fun deletePatient(patient: Patient)
-    @Query("DELETE FROM patient_table")
-    suspend fun deleteAllPatients()
+
 }

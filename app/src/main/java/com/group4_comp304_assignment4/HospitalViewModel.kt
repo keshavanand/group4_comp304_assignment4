@@ -32,11 +32,6 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
             repository.deletePatient(patient)
         }
     }
-    fun deleteAllPatients() {
-        viewModelScope.launch {
-            repository.deleteAllPatients()
-        }
-    }
 
     // Test operations
     val allTests: LiveData<List<Test>> = repository.getAllTests()
@@ -60,11 +55,6 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     fun deleteTest(test: Test) {
         viewModelScope.launch {
             repository.deleteTest(test)
-        }
-    }
-    fun deleteAllTest() {
-        viewModelScope.launch {
-            repository.deleteAllTest()
         }
     }
 
@@ -94,11 +84,7 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
             repository.deleteNurse(nurse)
         }
     }
-    fun deleteAllNurse() {
-        viewModelScope.launch {
-            repository.deleteAllNurse()
-        }
-    }
+
 }
 
 class HospitalViewModelFactory(private val repository: HospitalRepository) : ViewModelProvider.Factory {

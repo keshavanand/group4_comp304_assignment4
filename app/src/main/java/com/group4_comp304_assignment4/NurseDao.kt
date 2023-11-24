@@ -8,7 +8,7 @@ import androidx.room.Update
 @Dao
 interface NurseDao {
     @Insert
-    suspend fun insertNurse(nurse: Nurse)
+    fun insertNurse(nurse: Nurse)
 
     @Query("SELECT * FROM nurse_table")
     fun getAllNurses(): LiveData<List<Nurse>>
@@ -25,6 +25,4 @@ interface NurseDao {
     @Delete
     suspend fun deleteNurse(nurse: Nurse)
 
-    @Query("DELETE FROM nurse_table")
-    suspend fun deleteAllNurse()
 }

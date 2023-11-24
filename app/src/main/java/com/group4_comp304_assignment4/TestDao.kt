@@ -8,13 +8,13 @@ import androidx.room.Update
 @Dao
 interface TestDao {
     @Insert
-    suspend fun insertTest(test: Test)
+    fun insertTest(test: Test)
 
     @Query("SELECT * FROM test_table")
     fun getAllTests(): LiveData<List<Test>>
 
     @Query("SELECT * FROM test_table WHERE patientId = :patientId")
-    suspend fun getTestsForPatient(patientId: Long): LiveData<List<Test>>
+    fun getTestsForPatient(patientId: Long): LiveData<List<Test>>
 
     @Update
     suspend fun updateTest(test: Test)
@@ -22,6 +22,4 @@ interface TestDao {
     @Delete
     suspend fun deleteTest(test: Test)
 
-    @Query("DELETE FROM test_table")
-    suspend fun deleteAllTest()
 }

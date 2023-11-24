@@ -6,7 +6,7 @@ import androidx.room.Query
 class HospitalRepository(private val patientDao: PatientDao, private val testDao: TestDao, private val nurseDao: NurseDao) {
 
     // Patient operations
-    suspend fun insertPatient(patient: Patient) {
+    fun insertPatient(patient: Patient) {
         patientDao.insertPatient(patient)
     }
 
@@ -25,12 +25,10 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
     suspend fun deletePatient(patient: Patient) {
         patientDao.deletePatient(patient)
     }
-    suspend fun deleteAllPatients(){
-        patientDao.deleteAllPatients()
-    }
+
 
     // Test operations
-    suspend fun insertTest(test: Test) {
+    fun insertTest(test: Test) {
         testDao.insertTest(test)
     }
 
@@ -38,7 +36,7 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return testDao.getAllTests()
     }
 
-    suspend fun getTestsForPatient(patientId: Long): LiveData<List<Test>> {
+    fun getTestsForPatient(patientId: Long): LiveData<List<Test>> {
         return testDao.getTestsForPatient(patientId)
     }
 
@@ -50,11 +48,8 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         testDao.deleteTest(test)
     }
 
-    suspend fun deleteAllTest(){
-        testDao.deleteAllTest()
-    }
     // Nurse operations
-    suspend fun insertNurse(nurse: Nurse) {
+    fun insertNurse(nurse: Nurse) {
         nurseDao.insertNurse(nurse)
     }
 
@@ -77,7 +72,5 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
     suspend fun deleteNurse(nurse: Nurse) {
         nurseDao.deleteNurse(nurse)
     }
-    suspend fun deleteAllNurse(){
-        nurseDao.deleteAllNurse()
-    }
+
 }
