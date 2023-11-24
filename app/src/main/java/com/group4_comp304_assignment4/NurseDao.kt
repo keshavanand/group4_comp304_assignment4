@@ -20,9 +20,12 @@ interface NurseDao {
     fun getNurseByIdAndPassword(nurseId: Long, password: String): LiveData<Nurse?>
 
     @Update
-    suspend fun updateNurse(nurse: Nurse)
+    fun updateNurse(nurse: Nurse)
 
     @Delete
-    suspend fun deleteNurse(nurse: Nurse)
+    fun deleteNurse(nurse: Nurse)
+
+    @Query("DELETE FROM nurse_table")
+    fun deleteAllNurse()
 
 }

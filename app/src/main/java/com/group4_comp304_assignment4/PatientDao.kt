@@ -19,9 +19,11 @@ interface PatientDao {
     fun getPatientById(patientId: Long): LiveData<Patient?>
 
     @Update
-    suspend fun updatePatient(patient: Patient)
+    fun updatePatient(patient: Patient)
 
     @Delete
-    suspend fun deletePatient(patient: Patient)
+    fun deletePatient(patient: Patient)
+    @Query("DELETE FROM patient_table")
+    fun deleteAllPatients()
 
 }

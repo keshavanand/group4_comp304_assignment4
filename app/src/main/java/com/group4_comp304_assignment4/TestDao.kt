@@ -17,9 +17,11 @@ interface TestDao {
     fun getTestsForPatient(patientId: Long): LiveData<List<Test>>
 
     @Update
-    suspend fun updateTest(test: Test)
+    fun updateTest(test: Test)
 
     @Delete
-    suspend fun deleteTest(test: Test)
+    fun deleteTest(test: Test)
 
+    @Query("DELETE FROM test_table")
+    fun deleteAllTest()
 }

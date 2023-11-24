@@ -18,14 +18,16 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return patientDao.getPatientById(patientId)
     }
 
-    suspend fun updatePatient(patient: Patient) {
+    fun updatePatient(patient: Patient) {
         patientDao.updatePatient(patient)
     }
 
-    suspend fun deletePatient(patient: Patient) {
+    fun deletePatient(patient: Patient) {
         patientDao.deletePatient(patient)
     }
-
+    fun deleteAllPatients(){
+        patientDao.deleteAllPatients()
+    }
 
     // Test operations
     fun insertTest(test: Test) {
@@ -40,12 +42,15 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return testDao.getTestsForPatient(patientId)
     }
 
-    suspend fun updateTest(test: Test) {
+    fun updateTest(test: Test) {
         testDao.updateTest(test)
     }
 
-    suspend fun deleteTest(test: Test) {
+    fun deleteTest(test: Test) {
         testDao.deleteTest(test)
+    }
+    fun deleteAllTest(){
+        testDao.deleteAllTest()
     }
 
     // Nurse operations
@@ -65,12 +70,15 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return nurseDao.getNurseByIdAndPassword(nurseId,password)
     }
 
-    suspend fun updateNurse(nurse: Nurse) {
+    fun updateNurse(nurse: Nurse) {
         nurseDao.updateNurse(nurse)
     }
 
-    suspend fun deleteNurse(nurse: Nurse) {
+    fun deleteNurse(nurse: Nurse) {
         nurseDao.deleteNurse(nurse)
+    }
+    fun deleteAllNurse(){
+        nurseDao.deleteAllNurse()
     }
 
 }

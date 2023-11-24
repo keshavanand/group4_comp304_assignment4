@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "patient_table")
 class Patient(
     @PrimaryKey(autoGenerate = true)
-    val patientId: Long,
+    val patientId: Long =0,
     val firstname: String,
     val lastname: String,
     val department: String,
