@@ -14,11 +14,17 @@ interface NurseDao {
     fun getAllNurses(): LiveData<List<Nurse>>
 
     @Query("SELECT * FROM nurse_table WHERE nurseId = :nurseId")
-    suspend fun getNurseById(nurseId: Long): LiveData<Nurse>
+    fun getNurseById(nurseId: Long): LiveData<Nurse?>
+
+    @Query("SELECT * FROM nurse_table WHERE nurseId = :nurseId and password = :password")
+    fun getNurseByIdAndPassword(nurseId: Long, password: String): LiveData<Nurse?>
 
     @Update
     suspend fun updateNurse(nurse: Nurse)
 
     @Delete
     suspend fun deleteNurse(nurse: Nurse)
+
+    @Query("DELETE FROM nurse_table")
+    suspend fun deleteAllNurse()
 }

@@ -10,17 +10,19 @@ import androidx.room.Update
 @Dao
 interface PatientDao {
     @Insert
-    suspend fun insertPatient(patient: Patient)
+    suspend fun insertPatient(patient: Patient): Long
 
     @Query("SELECT * FROM patient_table")
     fun getAllPatients(): LiveData<List<Patient>>
 
     @Query("SELECT * FROM patient_table WHERE patientId = :patientId")
-    suspend fun getPatientById(patientId: Long): LiveData<Patient>
+    fun getPatientById(patientId: Long): LiveData<Patient?>
 
     @Update
     suspend fun updatePatient(patient: Patient)
 
     @Delete
     suspend fun deletePatient(patient: Patient)
+    @Query("DELETE FROM patient_table")
+    suspend fun deleteAllPatients()
 }

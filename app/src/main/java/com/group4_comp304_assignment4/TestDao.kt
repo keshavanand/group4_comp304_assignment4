@@ -21,4 +21,7 @@ interface TestDao {
 
     @Delete
     suspend fun deleteTest(test: Test)
+
+    @Query("DELETE FROM test_table")
+    suspend fun deleteAllTest()
 }

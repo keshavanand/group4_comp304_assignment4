@@ -17,7 +17,7 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-    suspend fun getPatientById(patientId: Long): LiveData<Patient> {
+    fun getPatientById(patientId: Long): LiveData<Patient?> {
         return repository.getPatientById(patientId)
     }
 
@@ -30,6 +30,11 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     fun deletePatient(patient: Patient) {
         viewModelScope.launch {
             repository.deletePatient(patient)
+        }
+    }
+    fun deleteAllPatients() {
+        viewModelScope.launch {
+            repository.deleteAllPatients()
         }
     }
 
@@ -57,6 +62,11 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
             repository.deleteTest(test)
         }
     }
+    fun deleteAllTest() {
+        viewModelScope.launch {
+            repository.deleteAllTest()
+        }
+    }
 
     // Nurse operations
     val allNurses: LiveData<List<Nurse>> = repository.getAllNurses()
@@ -67,10 +77,12 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-    suspend fun getNurseById(nurseId: Long): LiveData<Nurse> {
+    fun getNurseById(nurseId: Long): LiveData<Nurse?> {
         return repository.getNurseById(nurseId)
     }
-
+    fun getNurseByIdAndPassword(nurseId: Long,password: String): LiveData<Nurse?> {
+        return repository.getNurseByIdAndPassword(nurseId,password)
+    }
     fun updateNurse(nurse: Nurse) {
         viewModelScope.launch {
             repository.updateNurse(nurse)
@@ -80,6 +92,11 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     fun deleteNurse(nurse: Nurse) {
         viewModelScope.launch {
             repository.deleteNurse(nurse)
+        }
+    }
+    fun deleteAllNurse() {
+        viewModelScope.launch {
+            repository.deleteAllNurse()
         }
     }
 }

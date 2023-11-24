@@ -1,6 +1,7 @@
 package com.group4_comp304_assignment4
 
 import androidx.lifecycle.LiveData
+import androidx.room.Query
 
 class HospitalRepository(private val patientDao: PatientDao, private val testDao: TestDao, private val nurseDao: NurseDao) {
 
@@ -13,7 +14,7 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return patientDao.getAllPatients()
     }
 
-    suspend fun getPatientById(patientId: Long): LiveData<Patient> {
+    fun getPatientById(patientId: Long): LiveData<Patient?> {
         return patientDao.getPatientById(patientId)
     }
 
@@ -23,6 +24,9 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
 
     suspend fun deletePatient(patient: Patient) {
         patientDao.deletePatient(patient)
+    }
+    suspend fun deleteAllPatients(){
+        patientDao.deleteAllPatients()
     }
 
     // Test operations
@@ -46,6 +50,9 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         testDao.deleteTest(test)
     }
 
+    suspend fun deleteAllTest(){
+        testDao.deleteAllTest()
+    }
     // Nurse operations
     suspend fun insertNurse(nurse: Nurse) {
         nurseDao.insertNurse(nurse)
@@ -55,8 +62,12 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
         return nurseDao.getAllNurses()
     }
 
-    suspend fun getNurseById(nurseId: Long): LiveData<Nurse> {
+    fun getNurseById(nurseId: Long): LiveData<Nurse?> {
         return nurseDao.getNurseById(nurseId)
+    }
+
+    fun getNurseByIdAndPassword(nurseId: Long, password: String): LiveData<Nurse?> {
+        return nurseDao.getNurseByIdAndPassword(nurseId,password)
     }
 
     suspend fun updateNurse(nurse: Nurse) {
@@ -65,5 +76,8 @@ class HospitalRepository(private val patientDao: PatientDao, private val testDao
 
     suspend fun deleteNurse(nurse: Nurse) {
         nurseDao.deleteNurse(nurse)
+    }
+    suspend fun deleteAllNurse(){
+        nurseDao.deleteAllNurse()
     }
 }

@@ -13,7 +13,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Define methods to open other activities
-
+    fun openLoginActivity(view: View) {
+        startActivity(Intent(this, LoginActivity::class.java))
+    }
     fun openPatientActivity(view: View) {
         startActivity(Intent(this, PatientActivity::class.java))
     }

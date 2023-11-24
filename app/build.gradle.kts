@@ -1,10 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
-    namespace = "com.group4_comp304_assignment4"
+    namespace = "com.group4_comp304_assignment4" // Add the namespace
+
     compileSdk = 34
 
     defaultConfig {
@@ -49,7 +51,8 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.4.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.room:room-runtime:2.4.3")
-    //kapt("androidx.room:room-compiler:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
 // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.4.3")
+
 }
