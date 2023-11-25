@@ -12,4 +12,8 @@ class HospitalApplication: Application() {
     // rather than when the application starts
     val database by lazy { HospitalDatabase.getDatabase(this,applicationScope) }
     val repository by lazy { HospitalRepository(database.patientDao(),database.testDao(),database.nurseDao()) }
+
+    val PREF_NURSE_ID = "com.example.group4_comp304_assignment4.nurse_id"
+    val PREF_NAME = "com.example.group4_comp304_assignment4"
+
 }

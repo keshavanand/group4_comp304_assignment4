@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
@@ -18,11 +19,11 @@ interface PatientDao {
     @Query("SELECT * FROM patient_table WHERE patientId = :patientId")
     fun getPatientById(patientId: Long): LiveData<Patient?>
 
-    @Update
-    fun updatePatient(patient: Patient)
+    @Update(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun update(patient: Patient)
 
     @Delete
-    fun deletePatient(patient: Patient)
+    suspend fun delete(patient: Patient)
     @Query("DELETE FROM patient_table")
     fun deleteAllPatients()
 

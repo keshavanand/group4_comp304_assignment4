@@ -9,7 +9,7 @@ data class Test(
     val testId: Long = 0,
     val patientId: Long,
     val nurseId: Long,
-    val BPL: Int,
-    val BPH: Int,
-    val temperature: Float
+    val BPL: Double,
+    val BPH: Double,
+    val temperature: Double
 )
