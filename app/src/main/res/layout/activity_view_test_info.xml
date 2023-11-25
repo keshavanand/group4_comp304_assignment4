@@ -5,5 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewTestInfoActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <!-- Header -->
+        <TextView
+            android:id="@+id/headerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test Result Lookup"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+
+        <!-- Input Box -->
+        <EditText
+            android:id="@+id/inputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headerTextView"
+            android:layout_margin="16dp"
+            android:hint="PatientID"
+            android:inputType="number"/>
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/actionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputEditText"
+            android:layout_centerHorizontal="true"
+            android:text="Search"
+            android:onClick="searchTestResults"
+            android:padding="12dp"/>
+        <LinearLayout
+            android:id="@+id/variablesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/actionButton"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <!-- TextView for Variable 1 -->
+            <TextView
+                android:id="@+id/variable1TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient ID: "
+                android:textSize="18sp"/>
+
+            <!-- TextView for Variable 2 -->
+            <TextView
+                android:id="@+id/variable2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nurse ID: "
+                android:textSize="18sp"/>
+
+            <!-- TextView for Variable 3 -->
+            <TextView
+                android:id="@+id/variable3TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BPH: "
+                android:textSize="18sp"/>
+
+            <!-- TextView for Variable 4 -->
+            <TextView
+                android:id="@+id/variable4TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BPL: "
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/variable5TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature: "
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
