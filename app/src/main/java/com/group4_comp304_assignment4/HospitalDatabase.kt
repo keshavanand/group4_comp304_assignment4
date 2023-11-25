@@ -46,7 +46,7 @@ abstract class HospitalDatabase : RoomDatabase() {
             val patient = Patient(firstname = "John", lastname = "Doe", department = "Cardiology", nurseId = 1, room = "101")
             patientDao.insertPatient(patient)
 
-            val test = Test(patientId = 1, nurseId = 1, BPL = 120, BPH = 80, temperature = 98.6f)
+            val test = Test(patientId = 1, nurseId = 1, BPL = 120.0, BPH = 80.0, temperature = 98.6)
             testDao.insertTest(test)
 
             val nurse = Nurse(nurseId = 1, firstname = "Nurse", lastname = "Smith", department = "Cardiology", password = "password123")
